@@ -1,5 +1,4 @@
 import time
-import unittest
 
 from django.test import LiveServerTestCase
 from selenium import webdriver
@@ -68,7 +67,7 @@ class NewVisitorTest(LiveServerTestCase):
 
         # Satisfied, she goes back to sleep
 
-    def test_multiple_users_can_start_lists_at_diffrent_urls(self):
+    def test_multiple_users_can_start_lists_at_different_urls(self):
         # Edith start a new to-do list
         self.browser.get(self.live_server_url)
         inputbox = self.browser.find_element_by_id('id_new_item')
@@ -112,7 +111,3 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertIn('Buy milk', page_text)
 
         # Satisfied, they both go back to sleep
-
-
-if __name__ == '__main__':
-    unittest.main(warnings='ignore')
