@@ -68,7 +68,7 @@ class NewVisitorTest(LiveServerTestCase):
         # Satisfied, she goes back to sleep
 
     def test_multiple_users_can_start_lists_at_different_urls(self):
-        # Edith start a new to-do list
+        # Edith start a new todo list
         self.browser.get(self.live_server_url)
         inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox.send_keys('Buy peacock feathers')
@@ -86,7 +86,7 @@ class NewVisitorTest(LiveServerTestCase):
         self.browser.quit()
         self.browser = webdriver.Chrome()
 
-        # Francis visits the home page. There is no sign of Edith's
+        # Francis visits the home page.  There is no sign of Edith's
         # list
         self.browser.get(self.live_server_url)
         page_text = self.browser.find_element_by_tag_name('body').text
