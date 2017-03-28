@@ -9,10 +9,9 @@ https://docs.djangoproject.com/en/dev/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
-import json
 import os
 
-DEBUG = os.environ.get('MODE') == 'DEBUG'
+# DEBUG = os.environ.get('MODE') == 'DEBUG'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,10 +41,9 @@ ROOT_DIR = os.path.dirname(BASE_DIR)
 SECRET_KEY = '66ky1okd&e4$roa_-z8f1r0+4&6+x8s^$-%9=n-k_+mlri*2&s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -90,7 +88,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'superlists.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
@@ -100,7 +97,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, '../database/db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
@@ -120,7 +116,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 
@@ -133,7 +128,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
