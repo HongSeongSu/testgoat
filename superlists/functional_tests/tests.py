@@ -15,7 +15,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
         self.browser = webdriver.Chrome()
         staging_server = os.environ.get('STAGING_SERVER')
         if staging_server:
-            setattr(self, 'live_server_url', 'http://' + staging_server)
+            setattr(self, 'live_server_url', 'http://' + 'goat.dramabeer.com')
 
     def test_layout_and_styling(self):
         # Edith goes to the home page

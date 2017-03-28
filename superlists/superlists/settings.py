@@ -9,21 +9,39 @@ https://docs.djangoproject.com/en/dev/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
-
+import json
 import os
+
+DEBUG = os.environ.get('MODE') == 'DEBUG'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT_DIR = os.path.dirname(BASE_DIR)
 
+# config setting
+CONF_DIR = os.path.join(ROOT_DIR, '.conf-secret')
+CONFIG_FILE_COMMON = os.path.join(CONF_DIR, 'settings_common.json')
+if DEBUG:
+    CONFIG_FILE = os.path.join(CONF_DIR, 'settings_local.json')
+else:
+    CONFIG_FILE = os.path.join(CONF_DIR, 'settings_deploy.json')
+config_common = json.loads(open(CONFIG_FILE_COMMON).read())
+config = json.loads(open(CONFIG_FILE).read())
+
+for key, key_dict in config_common.items():
+    if not config.get(key):
+        config[key] = {}
+    for inner_key, inner_key_dict in key_dict.items():
+        config[key][inner_key] = inner_key_dict
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '66ky1okd&e4$roa_-z8f1r0+4&6+x8s^$-%9=n-k_+mlri*2&s'
+SECRET_KEY = config['django']['secret_key']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -78,7 +96,7 @@ WSGI_APPLICATION = 'superlists.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, '../database/db.sqlite3'),
     }
 }
 
