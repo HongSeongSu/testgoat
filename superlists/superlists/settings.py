@@ -41,11 +41,11 @@ ROOT_DIR = os.path.dirname(BASE_DIR)
 SECRET_KEY = '66ky1okd&e4$roa_-z8f1r0+4&6+x8s^$-%9=n-k_+mlri*2&s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-TEMPLATE_DEBUG = DEBUG
+# TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = ['goat.dramabeer.com']
+ALLOWED_HOSTS = []
 
 # Application definition
 
